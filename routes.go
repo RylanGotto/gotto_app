@@ -8,9 +8,10 @@ import (
 
 func (a *application) routes() *chi.Mux {
 	// middleware must be applied before routes
-	
+
 	// add routes here
 	a.App.Routes.Get("/", a.Handlers.Home)
+	a.App.Routes.Get("/jet", a.Handlers.JetPage)
 
 	//static routes
 	fileServer := http.FileServer(http.Dir("./public"))

@@ -1,12 +1,18 @@
 package main
 
-import "github.com/RylanGotto/gotto"
+import (
+	"app/handlers"
+
+	"github.com/RylanGotto/gotto"
+)
 
 type application struct {
-	App *gotto.Gotto
+	App      *gotto.Gotto
+	Handlers *handlers.Handlers
 }
 
 func main() {
 	g := initApplication()
+
 	g.App.ListenAndServe()
 }

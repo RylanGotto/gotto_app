@@ -1,6 +1,7 @@
 package main
 
 import (
+	"app/handlers"
 	"log"
 	"os"
 
@@ -21,9 +22,16 @@ func initApplication() *application {
 	}
 	got.AppName = "app"
 
-	app := &application{
+	routeHandlers := &handlers.Handlers{
 		App: got,
 	}
+
+	app := &application{
+		App:      got,
+		Handlers: routeHandlers,
+	}
+
+	app.App.Routes = app.routes()
 
 	return app
 }
